@@ -24,9 +24,19 @@ const ToggleButton = ({
     }
   };
 
+  let indicatorPosition = "translateX(0%)";
+
+  if (selectedAnswer === optionB) {
+    indicatorPosition = "translateX(100%)";
+  }
+
   return (
     <div className="toggle-button-container">
-     
+
+      {selectedAnswer && (
+        <div className="indicator" style={{transform: indicatorPosition }} />
+      )}
+
       <button
         className={`tab ${selectedAnswer === optionA ? "active" : ""}`}
         onClick={() => handleOptionClick(optionA)}
