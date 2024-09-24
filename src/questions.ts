@@ -3,7 +3,7 @@ export const questions = [
     {
         question: "Which of these colours are primary:",
         sets: [
-            {optionA: "Blue", optionB: "Green", optionC: "Grey"},
+            {optionA: "Blue", optionB: "Green", optionC: "Grey" },
             {optionA: "Purple", optionB: "Red"},
             {optionA: "Yellow", optionB: "Orange"},
         ],
@@ -19,16 +19,15 @@ export const questions = [
         correctAnswers: ["enormous", "gigantic"]
     },
 
-    // {
-    //     question: "What are the ideal conditions inside an office?",
-    //     options: ["good pay", "bad pay", "lots of meetings", "less meetings", "free coffee, expensive coffee"],
-    //     correctAnswers: ["good pay", "lots of meetings", "free coffee"]
-    // },
+    {
+        question: "What are the ideal conditions inside an office:",
+        sets: [
+            {optionA: "good pay", optionB: "bad pay"},
+            {optionA: "lots of meetings", optionB: "less meetings"},
+            {optionA: "expensive coffee", optionB: "free coffee"},
 
-    // {
-    //     question: "Which of these singers are British?",
-    //     options: ["Beyonce", "Ed Sheeran", "Celine Dion", "Jessie J"],
-    //     correctAnswers: ["Ed Sheeran", "Jessie J"]
-    // }
+        ],
+        correctAnswers: ["good pay", "free coffee", "lots of meetings"]
+    },
 
 ]
