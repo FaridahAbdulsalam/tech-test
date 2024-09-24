@@ -51,7 +51,6 @@ function App() {
 
   return (
     <>
-      <h1>This app works</h1>
       <Question label={questions[currentQuestion].question} />
       {questions[currentQuestion].sets.map((set, index) => (
         <ToggleButton

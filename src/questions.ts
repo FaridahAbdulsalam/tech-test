@@ -1,7 +1,7 @@
 
 export const questions = [
     {
-        question: "Which of these colours are primary?",
+        question: "Which of these colours are primary:",
         sets: [
             {optionA: "Blue", optionB: "Green"},
             {optionA: "Purple", optionB: "Red"},
@@ -11,7 +11,7 @@ export const questions = [
     },
 
     {
-        question: "Which of these words are spelt correctly",
+        question: "Which of these words are spelt correctly:",
         sets: [
             {optionA: "enourmous", optionB: "enormous"},
             {optionA: "gijantic", optionB: "gigantic"},
