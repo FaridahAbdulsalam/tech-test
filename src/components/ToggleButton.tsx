@@ -1,36 +1,54 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import "./ToggleButton.scss";
 
 type ToggleProps = {
-    optionA: string,
-    optionB : string,
-    optionC?: string,
-    selectedOption: string,
-    correctAnswer: string[],
-    onToggle: (oprion: string) => void;
-}
+  optionA: string;
+  optionB: string;
+  optionC?: string;
+  selectedAnswer?: string;
+  correctAnswer: string[];
+  onToggle: (option: string) => void;
+  isLocked: boolean;
+};
 
-const ToggleButton = ({optionA, optionB, selectedOption, correctAnswer, onToggle} : ToggleProps) => {
-
-    const handleOptionAClick = () => {
-        onToggle("optionA")
+const ToggleButton = ({
+  optionA,
+  optionB,
+  optionC,
+  selectedAnswer,
+  correctAnswer,
+  onToggle,
+  isLocked,
+}: ToggleProps) => {
+  const handleOptionClick = (option: string) => {
+    if (!isLocked) {
+      onToggle(option);
     }
-    const handleOptionBClick = () => {
-        onToggle("optionB")
-    }
+  };
 
   return (
     <div>
-      <button onClick={handleOptionAClick}
-      style={{backgroundColor: selectedOption === "optionA" ? 'lightpink' : 'white'}}>
+      <button
+        onClick={() => handleOptionClick(optionA)}
+        disabled={isLocked}
+        style={{
+          backgroundColor: selectedAnswer === optionA ? "lightpink" : "white",
+        }}
+      >
         {optionA}
       </button>
-      <button onClick={handleOptionBClick} 
-      style={{backgroundColor: selectedOption === "optionB" ? 'lightpink' : 'white'}}>
+
+      <button
+        onClick={() => handleOptionClick(optionB)}
+        disabled={isLocked}
+        style={{
+          backgroundColor: selectedAnswer === optionB ? "lightpink" : "white",
+        }}
+      >
         {optionB}
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default ToggleButton
+export default ToggleButton;

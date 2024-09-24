@@ -6,12 +6,19 @@ import { questions } from './questions';
 
 function App() {
 
-  const [selectedOption, setSelectedOption] = useState<string>("")
-  const [currentQuestion, setCurrentQuestion] = useState<number>(2)
+  const [selectedAnswers, setSelectedAnswers] = useState<string[]>([])
+  const [currentQuestion, setCurrentQuestion] = useState<number>(0)
   const [isLocked, setLocked] = useState<boolean>(false)
 
- const handleToggle = (option: string) => {
-  setSelectedOption(option);
+ const handleToggle = (selectedAnswer: string, index: number) => {
+    const updatedAnswers = [...selectedAnswers];
+    updatedAnswers[index] = selectedAnswer;
+    setSelectedAnswers(updatedAnswers);
+
+    const correctAnswers = questions[currentQuestion].correctAnswers;
+    if(correctAnswers.every(answer => updatedAnswers.includes(answer))){
+      setLocked(true)
+    }
  }
  
 
@@ -19,7 +26,16 @@ function App() {
     <>
     <h1>This app works</h1>
     <Question label={questions[currentQuestion].question}/>
-    <ToggleButton optionA={questions[currentQuestion].options[0]} optionB={questions[currentQuestion].options[1]}  selectedOption={selectedOption} correctAnswer={questions[currentQuestion].correctAnswers} onToggle={handleToggle} />   
+    {questions[currentQuestion].sets.map((set, index) => (
+      <ToggleButton
+      key={index}
+      optionA={set.optionA}
+      optionB={set.optionB}
+      selectedAnswer={selectedAnswers[index]}
+      correctAnswer={questions[currentQuestion].correctAnswers}
+      onToggle={(answer) => handleToggle(answer, index)}
+      isLocked={isLocked}/>
+    ))}
 
       </>
   )
