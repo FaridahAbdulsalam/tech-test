@@ -1,46 +1,39 @@
-.toggle-button-container{
-    position: relative;
-    display: flex;
-    width: 100%;
-    overflow: hidden;
-    height: 50px;
-    border: 1px solid white;
+.toggle-button-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  height: 50px;
+  border: 1px solid white;
+  border-radius: 50px;
+  margin-bottom: 5px;
+
+  .indicator {
+    position: absolute;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.288);
+    border: 3px solid rgba(47, 48, 46, 0.116);
     border-radius: 50px;
-    margin-bottom: 5px;
+    transition: transform 0.3s ease;
+    z-index: 1;
+  }
 
-    .indicator{
-        position: absolute;
-        height: 100%;
-        // width: 33%;
-        background-color: rgba(255, 255, 255, 0.288);
-        border: 3px solid rgba(47, 48, 46, 0.116);
-        border-radius: 50px;
-        transition: transform 0.3s ease;
-        z-index: 1;        
+  button {
+    border: none;
+  }
+
+  .tab {
+    flex: 1;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0);
+    cursor: pointer;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+
+    &.active {
+      color: black;
+      z-index: 2;
     }
-    
-    button{
-        border: none;
-    }
-
-    .tab{
-        flex: 1;
-        position: relative;
-        background-color: rgba(255, 255, 255, 0);
-        cursor: pointer;
-        text-align: center;
-        line-height: 50px;
-        color: white;
-               
-
-        &.active{
-            // background-color: rgba(221, 206, 208, 0.137);
-            color: black;
-            // border: 2px groove rgba(255, 255, 255, 0.336);
-            // border-radius: 50px;
-            z-index: 2;
-        }
-    }
-
-
+  }
 }

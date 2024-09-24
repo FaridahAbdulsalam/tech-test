@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import "./ToggleButton.scss";
 
 type ToggleProps = {
@@ -18,6 +17,7 @@ const ToggleButton = ({
   onToggle,
   isLocked,
 }: ToggleProps) => {
+    
   const handleOptionClick = (option: string) => {
     if (!isLocked) {
       onToggle(option);
@@ -28,15 +28,14 @@ const ToggleButton = ({
 
   if (selectedAnswer === optionB) {
     indicatorPosition = "translateX(100%)";
-  }else if(selectedAnswer === optionC){
-    indicatorPosition = "translateX(200%)"
+  } else if (selectedAnswer === optionC) {
+    indicatorPosition = "translateX(200%)";
   }
 
   const indicatorWidth = optionC ? "33%" : "50%";
 
   return (
     <div className="toggle-button-container">
-
       <button
         className={`tab ${selectedAnswer === optionA ? "active" : ""}`}
         onClick={() => handleOptionClick(optionA)}
@@ -55,16 +54,19 @@ const ToggleButton = ({
 
       {optionC && (
         <button
-        className={`tab ${selectedAnswer === optionC ? "active" : ""}`}
-        onClick={() => handleOptionClick(optionC)}
-        disabled={isLocked}
+          className={`tab ${selectedAnswer === optionC ? "active" : ""}`}
+          onClick={() => handleOptionClick(optionC)}
+          disabled={isLocked}
         >
-            {optionC}
+          {optionC}
         </button>
       )}
 
       {selectedAnswer && (
-        <div className="indicator" style={{transform: indicatorPosition, width: indicatorWidth, }} />
+        <div
+          className="indicator"
+          style={{ transform: indicatorPosition, width: indicatorWidth }}
+        />
       )}
     </div>
   );

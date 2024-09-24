@@ -74,7 +74,7 @@ function App() {
     console.log(totalQuestions);
 
     if (currentQuestion === totalQuestions - 1) {
-      alert("Well done! You have answered all the questions")
+      alert("Well done! You have answered all the questions");
     } else if (currentQuestion < totalQuestions - 1) {
       setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswers([]);
