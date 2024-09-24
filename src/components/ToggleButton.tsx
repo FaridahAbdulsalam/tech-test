@@ -6,7 +6,6 @@ type ToggleProps = {
   optionB: string;
   optionC?: string;
   selectedAnswer?: string;
-  correctAnswer: string[];
   onToggle: (option: string) => void;
   isLocked: boolean;
 };
@@ -16,7 +15,6 @@ const ToggleButton = ({
   optionB,
   optionC,
   selectedAnswer,
-  correctAnswer,
   onToggle,
   isLocked,
 }: ToggleProps) => {
@@ -27,23 +25,20 @@ const ToggleButton = ({
   };
 
   return (
-    <div>
+    <div className="toggle-button-container">
+     
       <button
+        className={`tab ${selectedAnswer === optionA ? "active" : ""}`}
         onClick={() => handleOptionClick(optionA)}
         disabled={isLocked}
-        style={{
-          backgroundColor: selectedAnswer === optionA ? "lightpink" : "white",
-        }}
       >
         {optionA}
       </button>
 
       <button
+        className={`tab ${selectedAnswer === optionB ? "active" : ""}`}
         onClick={() => handleOptionClick(optionB)}
         disabled={isLocked}
-        style={{
-          backgroundColor: selectedAnswer === optionB ? "lightpink" : "white",
-        }}
       >
         {optionB}
       </button>
@@ -52,3 +47,7 @@ const ToggleButton = ({
 };
 
 export default ToggleButton;
+
+// style={{
+//     backgroundColor: selectedAnswer === optionB ? "lightpink" : "white",
+//   }}
