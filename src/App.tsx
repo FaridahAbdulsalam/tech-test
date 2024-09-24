@@ -5,25 +5,38 @@ import ToggleButton from "./components/ToggleButton";
 import { questions } from "./questions";
 
 function App() {
-  const [activeTabIndex, setActiveTabIndex] = useState<number | null>(null)
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [isLocked, setLocked] = useState<boolean>(false);
+  const [message, setMessage] = useState<string>("");
 
   const handleToggle = (selectedAnswer: string, index: number) => {
     const updatedAnswers = [...selectedAnswers];
+    console.log(`"previous option:" ${updatedAnswers}`);
+    
     updatedAnswers[index] = selectedAnswer;
     setSelectedAnswers(updatedAnswers);
+      
 
     const correctAnswers = questions[currentQuestion].correctAnswers;
-    if (correctAnswers.every((answer) => updatedAnswers.includes(answer))) {
+    const allCorrect = correctAnswers.every((answer) => updatedAnswers.includes(answer))
+
+    console.log(`correct array: ${correctAnswers}, users answers: ${updatedAnswers}`);
+
+    if (allCorrect) {
       setLocked(true);
+      setMessage("The answer is correct")
+    }else{
+      console.log(updatedAnswers, correctAnswers);
+      setMessage("The answer is incorrect")
     }
+
+    
+
   };
 
   return (
     <>
-    <div className="gradient-background">
       <h1>This app works</h1>
       <Question label={questions[currentQuestion].question} />
       {questions[currentQuestion].sets.map((set, index) => (
@@ -36,7 +49,7 @@ function App() {
           isLocked={isLocked}
         />
       ))}
-    </div>
+      {message && <p>{message}</p>}
     </>
   );
 }
