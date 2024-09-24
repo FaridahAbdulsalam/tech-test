@@ -28,7 +28,11 @@ const ToggleButton = ({
 
   if (selectedAnswer === optionB) {
     indicatorPosition = "translateX(100%)";
+  }else if(selectedAnswer === optionC){
+    indicatorPosition = "translateX(200%)"
   }
+
+  const indicatorWidth = optionC ? "33%" : "50%";
 
   return (
     <div className="toggle-button-container">
@@ -49,8 +53,18 @@ const ToggleButton = ({
         {optionB}
       </button>
 
+      {optionC && (
+        <button
+        className={`tab ${selectedAnswer === optionC ? "active" : ""}`}
+        onClick={() => handleOptionClick(optionC)}
+        disabled={isLocked}
+        >
+            {optionC}
+        </button>
+      )}
+
       {selectedAnswer && (
-        <div className="indicator" style={{transform: indicatorPosition }} />
+        <div className="indicator" style={{transform: indicatorPosition, width: indicatorWidth, }} />
       )}
     </div>
   );

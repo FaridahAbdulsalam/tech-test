@@ -57,6 +57,7 @@ function App() {
           key={index}
           optionA={set.optionA}
           optionB={set.optionB}
+          optionC={set.optionC}
           selectedAnswer={selectedAnswers[index]}
           onToggle={(answer) => handleToggle(answer, index)}
           isLocked={isLocked}

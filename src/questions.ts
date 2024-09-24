@@ -3,7 +3,7 @@ export const questions = [
     {
         question: "Which of these colours are primary:",
         sets: [
-            {optionA: "Blue", optionB: "Green"},
+            {optionA: "Blue", optionB: "Green", optionC: "Grey"},
             {optionA: "Purple", optionB: "Red"},
             {optionA: "Yellow", optionB: "Orange"},
         ],
