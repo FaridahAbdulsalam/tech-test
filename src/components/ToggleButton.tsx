@@ -33,10 +33,6 @@ const ToggleButton = ({
   return (
     <div className="toggle-button-container">
 
-      {selectedAnswer && (
-        <div className="indicator" style={{transform: indicatorPosition }} />
-      )}
-
       <button
         className={`tab ${selectedAnswer === optionA ? "active" : ""}`}
         onClick={() => handleOptionClick(optionA)}
@@ -52,6 +48,10 @@ const ToggleButton = ({
       >
         {optionB}
       </button>
+
+      {selectedAnswer && (
+        <div className="indicator" style={{transform: indicatorPosition }} />
+      )}
     </div>
   );
 };

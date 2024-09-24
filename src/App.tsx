@@ -23,6 +23,7 @@ function App() {
 
   return (
     <>
+    <div className="gradient-background">
       <h1>This app works</h1>
       <Question label={questions[currentQuestion].question} />
       {questions[currentQuestion].sets.map((set, index) => (
@@ -35,6 +36,7 @@ function App() {
           isLocked={isLocked}
         />
       ))}
+    </div>
     </>
   );
 }

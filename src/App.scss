@@ -1,7 +1,18 @@
-*{
-    background-color: rgb(0, 217, 255);
+body{
+    
+    height: 100vh;
+    background: linear-gradient(rgb(173, 232, 236), rgb(11, 181, 211));
+    padding: 10px;
+    margin: 0;
 }
+
 
 h1{
     color: pink;
 }
+
+//background: linear-gradient(rgb(247, 193, 46), rgb(255, 145, 0)); red
+//background: linear-gradient(rgb(247, 177, 46), rgb(247, 103, 7)); orange
+//background: linear-gradient(rgb(238, 214, 79), rgb(248, 208, 27)); yellow
+//background: linear-gradient(rgb(169, 246, 252), rgb(14, 191, 223)); blue
+
