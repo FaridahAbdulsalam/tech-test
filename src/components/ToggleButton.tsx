@@ -6,7 +6,7 @@ type ToggleProps = {
     optionB : string,
     optionC?: string,
     selectedOption: string,
-    correctAnswer: string,
+    correctAnswer: string[],
     onToggle: (oprion: string) => void;
 }
 
