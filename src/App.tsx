@@ -5,6 +5,18 @@ import ToggleButton from "./components/ToggleButton";
 import { questions } from "./questions";
 
 function App() {
+
+const shuffle = (arr: any[]) => {
+
+  for(let i = arr.length - 1; i> 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[i], arr[i]];
+  }
+
+  return arr;
+}
+
+  const [shuffledQuestions, setShuffledQuestions] = useState<any[]>([])
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [isLocked, setLocked] = useState<boolean>(false);
@@ -14,17 +26,25 @@ function App() {
   );
 
   useEffect(() => {
+    setShuffledQuestions(shuffle([...questions]));
+  }, []);
+
+  useEffect(() => {
     document.body.style.background = backgroundColor;
   }, [backgroundColor]);
 
   const handleToggle = (selectedAnswer: string, index: number) => {
     const updatedAnswers = [...selectedAnswers];
+    console.log(shuffledQuestions);
+    
     console.log(`"previous option:" ${updatedAnswers}`);
 
     updatedAnswers[index] = selectedAnswer;
     setSelectedAnswers(updatedAnswers);
 
-    const correctAnswers = questions[currentQuestion].correctAnswers;
+    const correctAnswers = shuffledQuestions[currentQuestion].correctAnswers;
+    console.log(currentQuestion);
+    
 
     const allCorrectSelections = updatedAnswers.filter((answer) =>
       correctAnswers.includes(answer)
@@ -62,21 +82,22 @@ function App() {
   };
 
   const handleNextQuestion = () => {
-    const totalQuestions = questions.length;
-    console.log(totalQuestions);
-
-    if (currentQuestion === totalQuestions - 1) {
-      alert("Well done! You have answered all the questions");
-    } else if (currentQuestion < totalQuestions - 1) {
+       if(currentQuestion < shuffledQuestions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
       setSelectedAnswers([]);
       setLocked(false);
       setMessage("");
+    }else{
+      alert("Well done! You have answered all the questions");
     }
   };
 
+
+
   return (
     <>
+    {shuffledQuestions && 
+      <>
       <Question label={questions[currentQuestion].question} />
       {questions[currentQuestion].sets.map((set, index) => (
         <ToggleButton
@@ -89,6 +110,8 @@ function App() {
           isLocked={isLocked}
         />
       ))}
+      </>
+    }
       {message && <p>{message}</p>}
       <button onClick={handleNextQuestion} disabled={!isLocked}>
         Next
