@@ -9,9 +9,10 @@ This component includes a multiple choice style quiz including a sliding toggle 
 Assumptions:
 - Component will be used on commmon browsers such as Chrome, Safari.
 - Component has been designed to be accomodated on screen sizes over 320px.
-- There is no option to visit previous questions 
+- User cannot move onto to next question unless it is answered correctly so no previous button implemented
 
 Limitations:
 - Component to be used in larger project, there is no homepage or get started features. Refresh is only way to reset
+- There is no option to visit previous questions 
 - Does not allow for multiple correct answers within a single row
 - Questions and answers appear in order of implementation. There is no randomize feature

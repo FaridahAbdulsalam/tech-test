@@ -88,7 +88,9 @@ function App() {
         />
       ))}
       {message && <p>{message}</p>}
-      <button onClick={handleNextQuestion} disabled={!isLocked}>
+      <button 
+      className="next"
+      onClick={handleNextQuestion} disabled={!isLocked}>
         Next
       </button>
     </>
