@@ -18,8 +18,7 @@ function App() {
   }, [backgroundColor]);
 
   const handleToggle = (selectedAnswer: string, index: number) => {
-    const updatedAnswers = [...selectedAnswers];
-    console.log(`"previous option:" ${updatedAnswers}`);
+    const updatedAnswers = [...selectedAnswers]; 
 
     updatedAnswers[index] = selectedAnswer;
     setSelectedAnswers(updatedAnswers);
@@ -29,26 +28,26 @@ function App() {
     const allCorrectSelections = updatedAnswers.filter((answer) =>
       correctAnswers.includes(answer)
     ).length;
-    console.log(`correct answers count: ${allCorrectSelections}`);
+    
 
     const percentage = (allCorrectSelections / correctAnswers.length) * 100;
-    console.log(`percentage of correct answers: ${percentage}`);
+    
 
     if (percentage === 100) {
       setBackgroundColor(
-        "linear-gradient(rgb(169, 246, 252), rgb(14, 191, 223))"
+        "linear-gradient(rgb(169, 246, 252), rgb(14, 191, 223))" //blue gradient
       );
     } else if (percentage >= 75) {
       setBackgroundColor(
-        "linear-gradient(rgb(238, 214, 79), rgb(248, 208, 27))"
+        "linear-gradient(rgb(238, 214, 79), rgb(248, 208, 27))" //yellow gradient
       );
     } else if (percentage >= 50) {
       setBackgroundColor(
-        "linear-gradient(rgb(247, 177, 46), rgb(247, 103, 7))"
+        "linear-gradient(rgb(247, 177, 46), rgb(247, 103, 7))" //orange gradient
       );
     } else {
       setBackgroundColor(
-        "linear-gradient(rgb(245, 169, 118), rgb(230, 93, 15))"
+        "linear-gradient(rgb(245, 169, 118), rgb(230, 93, 15))" //red gradient
       );
     }
 
@@ -63,7 +62,6 @@ function App() {
 
   const handleNextQuestion = () => {
     const totalQuestions = questions.length;
-    console.log(totalQuestions);
 
     if (currentQuestion === totalQuestions - 1) {
       alert("Well done! You have answered all the questions");
