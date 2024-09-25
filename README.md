@@ -16,3 +16,11 @@ Limitations:
 - There is no option to visit previous questions 
 - Does not allow for multiple correct answers within a single row
 - Questions and answers appear in order of implementation. There is no randomize feature
+
+## Component previews:
+
+![Alt text](src/assets/images/image1.png)
+![Alt text](src/assets/images/image2.png)
+![Alt text](src/assets/images/image3.png)
+
+
