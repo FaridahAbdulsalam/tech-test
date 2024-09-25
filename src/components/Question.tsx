@@ -1,3 +1,5 @@
+import "./Question.scss";
+
 type QuestionProps = {
   label: string;
 };
@@ -5,14 +7,7 @@ type QuestionProps = {
 const Question = ({ label }: QuestionProps) => {
   return (
     <div>
-      <h2
-        style={{
-          color: "white",
-          fontSize: "30px",
-          textAlign: "center",
-          paddingBottom: "10px",
-        }}
-      >
+      <h2>
         {label}
       </h2>
     </div>

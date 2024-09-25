@@ -1,8 +1,9 @@
 body{
-    
+    align-content: center;
+    width: 80vw;
     height: 100vh;
     padding: 10px;
-    margin: 0;
+    margin: 0 auto;
 }
 
 
@@ -16,6 +17,24 @@ p{
     font-size: 20px;
 }
 
+
+@media(min-width: 320px) and (max-width: 750px){
+
+    body{
+        align-content: flex-start;
+        width: 80vw;
+        height: 100vh;
+        padding: 10px;
+        margin: 0 auto;
+
+        h1{
+            color: red;
+        }
+    }
+
+    
+
+}
 //background: linear-gradient(rgb(247, 193, 46), rgb(255, 145, 0)); red
 //background: linear-gradient(rgb(247, 177, 46), rgb(247, 103, 7)); orange
 //background: linear-gradient(rgb(238, 214, 79), rgb(248, 208, 27)); yellow
