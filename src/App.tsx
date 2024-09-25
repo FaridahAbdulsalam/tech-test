@@ -6,17 +6,7 @@ import { questions } from "./questions";
 
 function App() {
 
-const shuffle = (arr: any[]) => {
-
-  for(let i = arr.length - 1; i> 0; i--){
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[i], arr[i]];
-  }
-
-  return arr;
-}
-
-  const [shuffledQuestions, setShuffledQuestions] = useState<any[]>([])
+  const [copyQuestions, setCopyQuestions] = useState([...questions])
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [isLocked, setLocked] = useState<boolean>(false);
@@ -26,23 +16,27 @@ const shuffle = (arr: any[]) => {
   );
 
   useEffect(() => {
-    setShuffledQuestions(shuffle([...questions]));
-  }, []);
-
-  useEffect(() => {
     document.body.style.background = backgroundColor;
   }, [backgroundColor]);
 
+  const getRandomQuestion = () => {
+    const numOfQuestion = Math.floor(Math.random() * copyQuestions.length);
+    const randomQuestionIndex = copyQuestions[numOfQuestion];
+
+    setCurrentQuestion(Number(randomQuestionIndex))
+    console.log(currentQuestion);    
+  }
+
   const handleToggle = (selectedAnswer: string, index: number) => {
     const updatedAnswers = [...selectedAnswers];
-    console.log(shuffledQuestions);
+    console.log(copyQuestions);
     
     console.log(`"previous option:" ${updatedAnswers}`);
 
     updatedAnswers[index] = selectedAnswer;
     setSelectedAnswers(updatedAnswers);
 
-    const correctAnswers = shuffledQuestions[currentQuestion].correctAnswers;
+    const correctAnswers = questions[currentQuestion].correctAnswers;
     console.log(currentQuestion);
     
 
@@ -81,23 +75,16 @@ const shuffle = (arr: any[]) => {
     }
   };
 
-  const handleNextQuestion = () => {
-       if(currentQuestion < shuffledQuestions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-      setSelectedAnswers([]);
-      setLocked(false);
-      setMessage("");
-    }else{
-      alert("Well done! You have answered all the questions");
-    }
-  };
+  // const handleNextQuestion = () => {
+  //      if( < shuffledQuestions.length - 1) {
+     
+  // };
 
 
 
   return (
     <>
-    {shuffledQuestions && 
-      <>
+
       <Question label={questions[currentQuestion].question} />
       {questions[currentQuestion].sets.map((set, index) => (
         <ToggleButton
@@ -110,10 +97,9 @@ const shuffle = (arr: any[]) => {
           isLocked={isLocked}
         />
       ))}
-      </>
-    }
+    
       {message && <p>{message}</p>}
-      <button onClick={handleNextQuestion} disabled={!isLocked}>
+      <button onClick={getRandomQuestion} disabled={!isLocked}>
         Next
       </button>
     </>
