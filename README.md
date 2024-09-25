@@ -1,8 +1,8 @@
 # React + TypeScript + Vite
 
-#User Knowledge Testing Component
+# User Knowledge Testing Component
 
-##This project follows and meets the criteria of the UX/UI and Project brief. It also includes some of the extention tasks that were successfully implemented. There is a separate branch you may look at where one of the extention fetaures were attempted but did not make it to the main branch as it affected the functionality of the app.
+## This project follows and meets the criteria of the UX/UI and Project brief. It also includes some of the extention tasks that were successfully implemented. There is a separate branch you may look at where one of the extention fetaures were attempted but did not make it to the main branch as it affected the functionality of the app.
 
 This component includes a multiple choice style quiz including a sliding toggle effect. 
 
