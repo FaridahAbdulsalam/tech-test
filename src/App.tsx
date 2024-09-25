@@ -6,7 +6,6 @@ import { questions } from "./questions";
 
 function App() {
 
-  const [copyQuestions, setCopyQuestions] = useState([...questions])
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [isLocked, setLocked] = useState<boolean>(false);
@@ -19,17 +18,8 @@ function App() {
     document.body.style.background = backgroundColor;
   }, [backgroundColor]);
 
-  const getRandomQuestion = () => {
-    const numOfQuestion = Math.floor(Math.random() * copyQuestions.length);
-    const randomQuestionIndex = copyQuestions[numOfQuestion];
-
-    setCurrentQuestion(Number(randomQuestionIndex))
-    console.log(currentQuestion);    
-  }
-
   const handleToggle = (selectedAnswer: string, index: number) => {
     const updatedAnswers = [...selectedAnswers];
-    console.log(copyQuestions);
     
     console.log(`"previous option:" ${updatedAnswers}`);
 
@@ -75,11 +65,20 @@ function App() {
     }
   };
 
-  // const handleNextQuestion = () => {
-  //      if( < shuffledQuestions.length - 1) {
-     
-  // };
 
+  const handleNextQuestion = () => {
+    const totalQuestions = questions.length;
+    console.log(totalQuestions);
+
+    if (currentQuestion === totalQuestions - 1) {
+      alert("Well done! You have answered all the questions");
+    } else if (currentQuestion < totalQuestions - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+      setSelectedAnswers([]);
+      setLocked(false);
+      setMessage("");
+    }
+  };
 
 
   return (
@@ -99,7 +98,7 @@ function App() {
       ))}
     
       {message && <p>{message}</p>}
-      <button onClick={getRandomQuestion} disabled={!isLocked}>
+      <button onClick={handleNextQuestion} disabled={!isLocked}>
         Next
       </button>
     </>
