@@ -17,7 +17,7 @@ const ToggleButton = ({
   onToggle,
   isLocked,
 }: ToggleProps) => {
-    
+
   const handleOptionClick = (option: string) => {
     if (!isLocked) {
       onToggle(option);
@@ -73,7 +73,3 @@ const ToggleButton = ({
 };
 
 export default ToggleButton;
-
-// style={{
-//     backgroundColor: selectedAnswer === optionB ? "lightpink" : "white",
-//   }}

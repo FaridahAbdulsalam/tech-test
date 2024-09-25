@@ -5,14 +5,6 @@ import ToggleButton from "./components/ToggleButton";
 import { questions } from "./questions";
 
 function App() {
-  // const shuffleArray = (arr: number[]) => {
-  //   for(let i = arr.length - 1; i > 0; i--){
-  //     const j = Math.floor(Math.random() * (i + 1));
-  //     [arr[i], arr[j]] = [arr[j], arr[i]];
-  //   }
-  //   return arr;
-  // }
-
   const [selectedAnswers, setSelectedAnswers] = useState<string[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [isLocked, setLocked] = useState<boolean>(false);
